@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Özgür Nefes | Premium Sigara Bırakma Takipçisi</title>
     
-    <!-- Google Fonts: Inter & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -43,7 +41,6 @@
         }
     </script>
     
-    <!-- Özel CSS Stilleri -->
     <style>
         :root {
             --font-primary: 'Inter', sans-serif;
@@ -60,7 +57,6 @@
             font-family: var(--font-display);
         }
 
-        /* Cam Tasarımı (Glassmorphism) */
         .glass-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
@@ -85,7 +81,6 @@
             box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
         }
 
-        /* Uçuşan Balonlar */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -106,7 +101,6 @@
             100% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
-        /* Sayfa Geçişleri */
         .tab-content {
             animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -116,7 +110,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Dairesel İlerleme */
         .circle-progress-bg {
             fill: none;
             stroke: #e2e8f0;
@@ -132,7 +125,6 @@
             transition: stroke-dashoffset 0.8s ease-in-out;
         }
 
-        /* Mobil Navigasyon Aktif Durumu */
         .bottom-nav-item {
             position: relative;
         }
@@ -158,7 +150,6 @@
             transform: translateX(-50%) scaleX(1);
         }
 
-        /* Aşerme Butonu */
         @keyframes pulse-ring {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
@@ -169,48 +160,22 @@
             animation: pulse-ring 2s infinite;
         }
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 9999px;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #4b5563;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-        }
-
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; border: 2px solid transparent; background-clip: padding-box; }
+        .dark ::-webkit-scrollbar-thumb { background: #4b5563; border: 2px solid transparent; background-clip: padding-box; }
         ::-webkit-scrollbar-thumb:hover { background-color: #94a3b8; }
         .dark ::-webkit-scrollbar-thumb:hover { background-color: #6b7280; }
 
-        input:focus, select:focus {
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
-        }
-
-        .dark input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-            filter: invert(1);
-        }
+        input:focus, select:focus { box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15); }
+        .dark input[type="datetime-local"]::-webkit-calendar-picker-indicator { filter: invert(1); }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-dark-900 dark:text-slate-100 min-h-screen flex flex-col relative">
     
-    <!-- Dekoratif Bloblar -->
     <div class="blob bg-primary-200 dark:bg-primary-700/20 w-72 h-72 top-10 left-10"></div>
     <div class="blob bg-teal-200 dark:bg-teal-700/20 w-80 h-80 bottom-20 right-10"></div>
 
-    <!-- Üst Menü -->
     <header class="bg-white/80 dark:bg-dark-800/80 backdrop-blur-md border-b border-slate-100 dark:border-dark-700 p-4 sticky top-0 z-40 transition-colors">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
@@ -225,7 +190,6 @@
                 </div>
             </div>
             
-            <!-- Masaüstü Navigasyon (Mobilde Gizlenir) -->
             <nav class="hidden md:flex items-center space-x-1">
                 <button data-tab="dashboard" class="bottom-nav-item active px-4 py-2 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-dark-700 transition-colors">Gösterge Paneli</button>
                 <button data-tab="health" class="bottom-nav-item px-4 py-2 rounded-xl text-sm font-medium hover:bg-slate-100 dark:hover:bg-dark-700 transition-colors">Sağlık</button>
@@ -235,7 +199,6 @@
         </div>
     </header>
 
-    <!-- Ana İçerik Alanı -->
     <main class="flex-grow flex items-center justify-center p-4 sm:p-6 w-full max-w-4xl mx-auto z-10">
         
         <!-- SETUP EKRANI -->
@@ -280,14 +243,13 @@
             </form>
         </div>
 
-        <!-- DASHBOARD UYGULAMA PANELİ -->
-        <div id="app-screen" class="hidden w-full space-y-6 sm:space-y-8 animate-fade-in">
+        <!-- APP EKRANI -->
+        <div id="app-screen" class="hidden w-full space-y-6 sm:space-y-8">
             
-            <!-- SEKME: GÖSTERGE PANELİ -->
+            <!-- GÖSTERGE PANELİ -->
             <div id="dashboard-section" class="tab-section space-y-6 sm:space-y-8 tab-content">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Sayaç -->
                     <div class="lg:col-span-2 glass-card rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden bg-gradient-to-br from-primary-500 to-teal-600 text-white border-none flex flex-col justify-between">
                         <div class="absolute -top-10 -right-10 opacity-10">
                             <svg class="w-48 h-48" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -318,7 +280,6 @@
                         </div>
                     </div>
 
-                    <!-- Sağlık Skoru -->
                     <div class="glass-card rounded-3xl p-6 shadow-md flex flex-col items-center justify-center text-center">
                         <div class="relative flex items-center justify-center mb-3">
                             <svg class="w-32 h-32 transform -rotate-90">
@@ -335,7 +296,6 @@
                     </div>
                 </div>
 
-                <!-- Kriz Kaydet Butonu -->
                 <div class="glass-card rounded-3xl p-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="text-center sm:text-left">
                         <h4 class="font-extrabold text-slate-850 dark:text-slate-100 text-lg font-display">Canınız Sigara mı İstiyor?</h4>
@@ -347,9 +307,7 @@
                     </button>
                 </div>
 
-                <!-- İstatistikler Grid -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <!-- Tasarruf -->
                     <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-100/50 flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold text-slate-400 uppercase">Tasarruf Edilen</span>
@@ -363,7 +321,6 @@
                         </div>
                     </div>
 
-                    <!-- İçilmeyen Sigara -->
                     <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-100/50 flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold text-slate-400 uppercase">İçilmeyen Sigara</span>
@@ -377,7 +334,6 @@
                         </div>
                     </div>
 
-                    <!-- Aşermeler -->
                     <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-100/50 flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold text-slate-400 uppercase">Yenilen Aşermeler</span>
@@ -391,7 +347,6 @@
                         </div>
                     </div>
 
-                    <!-- Yaşam Süresi -->
                     <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-100/50 flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold text-slate-400 uppercase">Yaşam Kazanımı</span>
@@ -406,7 +361,6 @@
                     </div>
                 </div>
 
-                <!-- Motivasyon Sözü -->
                 <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-150/40 relative overflow-hidden">
                     <div class="flex items-start justify-between">
                         <div class="space-y-2 max-w-[85%]">
@@ -421,7 +375,7 @@
                 </div>
             </div>
 
-            <!-- SEKME: SAĞLIK DURUMU -->
+            <!-- SAĞLIK -->
             <div id="health-section" class="tab-section hidden space-y-6 tab-content">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
@@ -429,7 +383,6 @@
                         <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Vücudunuzun sigarayı bıraktığınız andan itibaren geçirdiği biyolojik değişimler.</p>
                     </div>
                     
-                    <!-- Filtreler -->
                     <div class="flex flex-wrap gap-1.5 bg-slate-100/60 dark:bg-dark-800/60 p-1 rounded-2xl border border-slate-200/40 dark:border-dark-700 shrink-0 self-start sm:self-center">
                         <button data-filter="all" class="milestone-filter-btn px-3 py-1.5 text-xs font-semibold rounded-xl bg-primary-500 text-white dark:bg-primary-600 transition-all">Hepsi</button>
                         <button data-filter="Kısa Vade" class="milestone-filter-btn px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 text-slate-600 dark:bg-dark-700 dark:text-slate-300 hover:bg-slate-200 transition-all">Kısa Vade</button>
@@ -438,11 +391,10 @@
                     </div>
                 </div>
 
-                <!-- Dinamik Kartlar -->
                 <div id="health-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             </div>
 
-            <!-- SEKME: BAŞARILAR -->
+            <!-- BAŞARILAR -->
             <div id="achievements-section" class="tab-section hidden space-y-6 tab-content">
                 <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-150/40">
                     <h3 class="text-xl font-extrabold text-slate-800 dark:text-slate-100 font-display">Başarılar ve Rozetler</h3>
@@ -458,11 +410,10 @@
                     </div>
                 </div>
 
-                <!-- Dinamik Rozetler -->
                 <div id="achievements-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
             </div>
 
-            <!-- SEKME: AYARLAR -->
+            <!-- AYARLAR -->
             <div id="settings-section" class="tab-section hidden space-y-6 tab-content">
                 <div>
                     <h3 class="text-2xl font-extrabold text-slate-850 dark:text-slate-100 font-display">Ayarlar</h3>
@@ -506,7 +457,6 @@
                         </form>
                     </div>
 
-                    <!-- Görünüm & Sıfırlama -->
                     <div class="space-y-6">
                         <div class="glass-card rounded-3xl p-6 shadow-sm space-y-4">
                             <h4 class="font-bold text-slate-800 dark:text-slate-100 font-display">Görünüm Teması</h4>
@@ -545,7 +495,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="text-center py-6 text-slate-400 dark:text-slate-550 text-xs mt-auto z-10 transition-colors">
         <p>Sağlıklı bir gelecek için kararlılıkla attığınız adıma tebrikler. ✨</p>
     </footer>
@@ -570,9 +519,8 @@
         </button>
     </div>
 
-    <!-- JavaScript Mantıksal Kodları -->
     <script>
-        // --- 1. VERİ TANIMLAMALARI ---
+        // --- VERİ TANIMLAMALARI ---
         const milestones = [
             { id: 1, label: "Kalp Atış Hızı", detail: "Kan basıncı ve nabız hızı normale döner. El ve ayaklar ısınmaya başlar.", seconds: 20 * 60, icon: "pulse", category: "Kısa Vade" },
             { id: 2, label: "Oksijen Seviyesi", detail: "Kandaki karbonmonoksit seviyesi yarıya iner. Oksijen seviyesi normale döner.", seconds: 8 * 3600, icon: "wind", category: "Kısa Vade" },
@@ -622,7 +570,7 @@
             { quote: "Sigara dumanıyla uçup giden sadece paran değil, gelecekteki mutlu günlerindir.", author: "Anonim" }
         ];
 
-        // --- 2. UYGULAMA MOTORU ---
+        // --- UYGULAMA DURUMU ---
         let appState = {
             quitDate: null,
             cigsPerDay: 0,
@@ -634,7 +582,7 @@
         };
 
         let timerInterval = null;
-        let currentQuoteIndex = 0;
+        let currentQuoteIndex = -1;
 
         const docHtml = document.documentElement;
         const setupScreen = document.getElementById('setup-screen');
@@ -654,64 +602,62 @@
         const themeDarkBtn = document.getElementById('theme-dark');
         const themeSystemBtn = document.getElementById('theme-system');
 
-        // Gelişmiş Tarih Ayrıştırıcı (iOS Safari ve Mobil cihazlar için güvenli parser)
+        // --- TARİH PARSER (iOS Safari uyumlu) ---
         function parseDateSafely(dateStr) {
             if (!dateStr) return null;
-            
-            // Eğer ISO formatında Z ile bitiyorsa doğrudan oluştur
+
+            // ISO string (Z ile biten)
             if (typeof dateStr === 'string' && dateStr.endsWith('Z')) {
                 const d = new Date(dateStr);
-                if (!isNaN(d.getTime())) return d;
+                return isNaN(d.getTime()) ? null : d;
             }
-            
-            // date-time-local girdisini ayrıştır: YYYY-MM-DDTHH:MM
-            const parts = dateStr.split(/[-T:\.Z ]/);
-            if (parts.length >= 5) {
-                const year = parseInt(parts[0], 10);
-                const month = parseInt(parts[1], 10) - 1;
-                const day = parseInt(parts[2], 10);
-                const hour = parseInt(parts[3], 10);
-                const minute = parseInt(parts[4], 10);
-                const second = parts[5] ? parseInt(parts[5], 10) : 0;
-                
-                // Yerel saat diliminde oluşturulur (Timezone kayması engellenir)
-                const d = new Date(year, month, day, hour, minute, second);
-                if (!isNaN(d.getTime())) return d;
+
+            // datetime-local formatı: YYYY-MM-DDTHH:MM veya YYYY-MM-DDTHH:MM:SS
+            const match = String(dateStr).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})(?::(\d{2}))?/);
+            if (match) {
+                const d = new Date(
+                    parseInt(match[1], 10),
+                    parseInt(match[2], 10) - 1,
+                    parseInt(match[3], 10),
+                    parseInt(match[4], 10),
+                    parseInt(match[5], 10),
+                    match[6] ? parseInt(match[6], 10) : 0
+                );
+                return isNaN(d.getTime()) ? null : d;
             }
-            
+
             const fallback = new Date(dateStr);
             return isNaN(fallback.getTime()) ? null : fallback;
         }
 
+        // --- BAŞLANGIÇ ---
         document.addEventListener('DOMContentLoaded', () => {
             loadState();
-            setupEventListeners();
             applyTheme(appState.theme);
-            
-            if (appState.quitDate) {
-                showScreen('dashboard');
+            setupEventListeners();
+
+            if (appState.quitDate && !isNaN(appState.quitDate.getTime())) {
+                showAppScreen();
                 startTracking();
             } else {
-                showScreen('setup');
-                initSetupForm();
+                showSetupScreen();
             }
         });
 
         function loadState() {
-            const savedState = localStorage.getItem('ozgur_nefes_state');
-            if (savedState) {
-                try {
-                    const parsed = JSON.parse(savedState);
-                    appState.quitDate = parsed.quitDate ? parseDateSafely(parsed.quitDate) : null;
-                    appState.cigsPerDay = parseFloat(parsed.cigsPerDay) || 0;
-                    appState.pricePerPack = parseFloat(parsed.pricePerPack) || 0;
-                    appState.packSize = parseFloat(parsed.packSize) || 20;
-                    appState.cravingsBeaten = parseInt(parsed.cravingsBeaten) || 0;
-                    appState.theme = parsed.theme || 'light';
-                    appState.unlockedAchievements = Array.isArray(parsed.unlockedAchievements) ? parsed.unlockedAchievements : [];
-                } catch (e) {
-                    console.error("Local storage state load error:", e);
-                }
+            try {
+                const saved = localStorage.getItem('ozgur_nefes_state');
+                if (!saved) return;
+                const parsed = JSON.parse(saved);
+                appState.quitDate = parsed.quitDate ? parseDateSafely(parsed.quitDate) : null;
+                appState.cigsPerDay = parseFloat(parsed.cigsPerDay) || 0;
+                appState.pricePerPack = parseFloat(parsed.pricePerPack) || 0;
+                appState.packSize = parseFloat(parsed.packSize) || 20;
+                appState.cravingsBeaten = parseInt(parsed.cravingsBeaten) || 0;
+                appState.theme = parsed.theme || 'light';
+                appState.unlockedAchievements = Array.isArray(parsed.unlockedAchievements) ? parsed.unlockedAchievements : [];
+            } catch (e) {
+                console.error('State yüklenemedi:', e);
             }
         }
 
@@ -722,9 +668,80 @@
             }));
         }
 
+        // --- EKRAN GEÇİŞLERİ ---
+        function showSetupScreen() {
+            setupScreen.classList.remove('hidden');
+            appScreen.classList.add('hidden');
+            initSetupForm();
+        }
+
+        function showAppScreen() {
+            setupScreen.classList.add('hidden');
+            appScreen.classList.remove('hidden');
+            fillEditForm();
+            switchTab('dashboard');
+        }
+
+        function initSetupForm() {
+            const now = new Date();
+            const pad = n => String(n).padStart(2, '0');
+            const dateInput = document.getElementById('input-date');
+            if (dateInput) {
+                dateInput.value = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}T${pad(now.getHours())}:${pad(now.getMinutes())}`;
+            }
+        }
+
+        function fillEditForm() {
+            if (!appState.quitDate || isNaN(appState.quitDate.getTime())) return;
+            const d = appState.quitDate;
+            const pad = n => String(n).padStart(2, '0');
+            const editDateInput = document.getElementById('edit-date');
+            if (editDateInput) editDateInput.value = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+            const editCigs = document.getElementById('edit-cigs');
+            const editPrice = document.getElementById('edit-price');
+            const editPack = document.getElementById('edit-pack-size');
+            if (editCigs) editCigs.value = appState.cigsPerDay;
+            if (editPrice) editPrice.value = appState.pricePerPack;
+            if (editPack) editPack.value = appState.packSize;
+        }
+
+        // --- SEKME GEÇİŞİ ---
+        function switchTab(tabId) {
+            // Nav aktif durumu
+            navItems.forEach(item => {
+                item.getAttribute('data-tab') === tabId
+                    ? item.classList.add('active')
+                    : item.classList.remove('active');
+            });
+
+            // Seksiyon görünürlüğü
+            tabSections.forEach(section => {
+                if (section.id === `${tabId}-section`) {
+                    section.classList.remove('hidden');
+                    // Animasyonu yeniden tetikle
+                    section.classList.remove('tab-content');
+                    void section.offsetWidth;
+                    section.classList.add('tab-content');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+
+            if (tabId === 'dashboard') {
+                displayRandomQuote();
+                updateDashboard();
+            } else if (tabId === 'health') {
+                renderMilestones('all');
+            } else if (tabId === 'achievements') {
+                renderAchievements();
+            }
+        }
+
+        // --- EVENT LISTENERS ---
         function setupEventListeners() {
+            // Setup formu
             if (setupForm) {
-                setupForm.addEventListener('submit', (e) => {
+                setupForm.addEventListener('submit', e => {
                     e.preventDefault();
                     const dateVal = document.getElementById('input-date').value;
                     const cigsVal = parseFloat(document.getElementById('input-cigs').value);
@@ -732,8 +749,12 @@
                     const packSizeVal = parseFloat(document.getElementById('input-pack-size').value) || 20;
 
                     const selectedDate = parseDateSafely(dateVal);
-                    if (!selectedDate || selectedDate.getTime() > Date.now()) {
-                        alert("Bırakma tarihi gelecekteki bir zaman veya geçersiz olamaz!");
+                    if (!selectedDate || isNaN(selectedDate.getTime())) {
+                        alert("Geçersiz tarih! Lütfen tekrar girin.");
+                        return;
+                    }
+                    if (selectedDate.getTime() > Date.now()) {
+                        alert("Bırakma tarihi gelecekte olamaz!");
                         return;
                     }
 
@@ -743,15 +764,15 @@
                     appState.packSize = packSizeVal;
                     appState.cravingsBeaten = 0;
                     appState.unlockedAchievements = [];
-
                     saveState();
-                    showScreen('dashboard');
+                    showAppScreen();
                     startTracking();
                 });
             }
 
+            // Edit formu
             if (editForm) {
-                editForm.addEventListener('submit', (e) => {
+                editForm.addEventListener('submit', e => {
                     e.preventDefault();
                     const dateVal = document.getElementById('edit-date').value;
                     const cigsVal = parseFloat(document.getElementById('edit-cigs').value);
@@ -759,8 +780,12 @@
                     const packSizeVal = parseFloat(document.getElementById('edit-pack-size').value) || 20;
 
                     const selectedDate = parseDateSafely(dateVal);
-                    if (!selectedDate || selectedDate.getTime() > Date.now()) {
-                        alert("Bırakma tarihi gelecekteki bir zaman veya geçersiz olamaz!");
+                    if (!selectedDate || isNaN(selectedDate.getTime())) {
+                        alert("Geçersiz tarih!");
+                        return;
+                    }
+                    if (selectedDate.getTime() > Date.now()) {
+                        alert("Bırakma tarihi gelecekte olamaz!");
                         return;
                     }
 
@@ -768,184 +793,143 @@
                     appState.cigsPerDay = cigsVal;
                     appState.pricePerPack = priceVal;
                     appState.packSize = packSizeVal;
-
                     saveState();
-                    showNotification("Bilgileriniz başarıyla güncellendi.");
+                    fillEditForm();
                     startTracking();
+                    showNotification("Bilgileriniz başarıyla güncellendi.");
                 });
             }
 
+            // Sıfırla
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
                     if (confirm("Tüm bilgilerinizi ve istatistiklerinizi sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.")) {
                         if (timerInterval) clearInterval(timerInterval);
+                        timerInterval = null;
                         localStorage.removeItem('ozgur_nefes_state');
-                        appState = {
-                            quitDate: null,
-                            cigsPerDay: 0,
-                            pricePerPack: 0,
-                            packSize: 20,
-                            cravingsBeaten: 0,
-                            theme: 'light',
-                            unlockedAchievements: []
-                        };
-                        showScreen('setup');
-                        initSetupForm();
+                        appState = { quitDate: null, cigsPerDay: 0, pricePerPack: 0, packSize: 20, cravingsBeaten: 0, theme: 'light', unlockedAchievements: [] };
+                        showSetupScreen();
                     }
                 });
             }
 
+            // Aşerme butonu
             if (cravingsBtn) {
                 cravingsBtn.addEventListener('click', () => {
                     appState.cravingsBeaten++;
                     saveState();
-                    
-                    cravingsBtn.classList.add('scale-95');
-                    setTimeout(() => cravingsBtn.classList.remove('scale-95'), 100);
-
                     updateDashboard();
                     checkAchievements();
                     showNotification("Tebrikler! Bir kriz daha iradeyle aşıldı. 🌟");
                 });
             }
 
+            // Navigasyon
             navItems.forEach(item => {
-                item.addEventListener('click', (e) => {
+                item.addEventListener('click', e => {
                     e.preventDefault();
-                    switchTab(item.getAttribute('data-tab'));
+                    const tab = item.getAttribute('data-tab');
+                    if (appScreen.classList.contains('hidden')) return;
+                    switchTab(tab);
                 });
             });
 
+            // Tema
             if (themeLightBtn) themeLightBtn.addEventListener('click', () => setTheme('light'));
             if (themeDarkBtn) themeDarkBtn.addEventListener('click', () => setTheme('dark'));
             if (themeSystemBtn) themeSystemBtn.addEventListener('click', () => setTheme('system'));
 
-            if (quoteRefreshBtn) {
-                quoteRefreshBtn.addEventListener('click', () => displayRandomQuote());
-            }
+            // Alıntı yenile
+            if (quoteRefreshBtn) quoteRefreshBtn.addEventListener('click', displayRandomQuote);
 
-            const filterButtons = document.querySelectorAll('.milestone-filter-btn');
-            filterButtons.forEach(btn => {
+            // Sağlık filtreleri
+            document.querySelectorAll('.milestone-filter-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    filterButtons.forEach(b => b.classList.remove('bg-primary-500', 'text-white', 'dark:bg-primary-600'));
-                    filterButtons.forEach(b => b.classList.add('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300'));
-                    btn.classList.remove('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300');
+                    document.querySelectorAll('.milestone-filter-btn').forEach(b => {
+                        b.classList.remove('bg-primary-500', 'text-white', 'dark:bg-primary-600');
+                        b.classList.add('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300');
+                    });
                     btn.classList.add('bg-primary-500', 'text-white', 'dark:bg-primary-600');
+                    btn.classList.remove('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300');
                     renderMilestones(btn.getAttribute('data-filter'));
                 });
             });
         }
 
-        // Yerel zamana göre input doldurucu (timezone offset sorunlarını çözer)
-        function initSetupForm() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0');
-            const day = String(now.getDate()).padStart(2, '0');
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            
-            const dateInput = document.getElementById('input-date');
-            if (dateInput) {
-                dateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
-            }
-        }
-
-        function showScreen(screen) {
-            if (screen === 'setup') {
-                setupScreen.classList.remove('hidden');
-                appScreen.classList.add('hidden');
-            } else {
-                setupScreen.classList.add('hidden');
-                appScreen.classList.remove('hidden');
-                
-                if (appState.quitDate && !isNaN(appState.quitDate.getTime())) {
-                    const editDateInput = document.getElementById('edit-date');
-                    if (editDateInput) {
-                        const now = appState.quitDate;
-                        const year = now.getFullYear();
-                        const month = String(now.getMonth() + 1).padStart(2, '0');
-                        const day = String(now.getDate()).padStart(2, '0');
-                        const hours = String(now.getHours()).padStart(2, '0');
-                        const minutes = String(now.getMinutes()).padStart(2, '0');
-                        editDateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
-                    }
-                    if (document.getElementById('edit-cigs')) document.getElementById('edit-cigs').value = appState.cigsPerDay;
-                    if (document.getElementById('edit-price')) document.getElementById('edit-price').value = appState.pricePerPack;
-                    if (document.getElementById('edit-pack-size')) document.getElementById('edit-pack-size').value = appState.packSize;
-                }
-            }
-        }
-
-        function switchTab(tabId) {
-            navItems.forEach(item => {
-                item.getAttribute('data-tab') === tabId ? item.classList.add('active') : item.classList.remove('active');
-            });
-
-            tabSections.forEach(section => {
-                section.id === `${tabId}-section` ? section.classList.remove('hidden') : section.classList.add('hidden');
-            });
-
-            if (tabId === 'dashboard') displayRandomQuote();
-            else if (tabId === 'health') renderMilestones('all');
-            else if (tabId === 'achievements') renderAchievements();
-        }
-
+        // --- TAKİP BAŞLAT ---
         function startTracking() {
-            displayRandomQuote();
-            renderMilestones('all');
-            renderAchievements();
-            updateDashboard();
-
+            if (!appState.quitDate || isNaN(appState.quitDate.getTime())) {
+                console.error('Geçersiz quitDate, takip başlatılamadı.');
+                return;
+            }
             if (timerInterval) clearInterval(timerInterval);
+            updateDashboard();
             timerInterval = setInterval(updateDashboard, 1000);
         }
 
+        // --- GÖSTERGE PANELİ GÜNCELLE ---
         function updateDashboard() {
             if (!appState.quitDate || isNaN(appState.quitDate.getTime())) return;
 
-            const now = Date.now();
-            const secondsElapsed = Math.max(0, Math.floor((now - appState.quitDate.getTime()) / 1000));
+            const secondsElapsed = Math.max(0, Math.floor((Date.now() - appState.quitDate.getTime()) / 1000));
 
-            const days = Math.floor(secondsElapsed / 86400);
-            const hours = Math.floor((secondsElapsed % 86400) / 3600);
+            const days    = Math.floor(secondsElapsed / 86400);
+            const hours   = Math.floor((secondsElapsed % 86400) / 3600);
             const minutes = Math.floor((secondsElapsed % 3600) / 60);
             const seconds = secondsElapsed % 60;
 
-            setInnerText('val-days', days);
-            setInnerText('val-hours', String(hours).padStart(2, '0'));
-            setInnerText('val-mins', String(minutes).padStart(2, '0'));
-            setInnerText('val-secs', String(seconds).padStart(2, '0'));
+            setElText('val-days', days);
+            setElText('val-hours', String(hours).padStart(2, '0'));
+            setElText('val-mins', String(minutes).padStart(2, '0'));
+            setElText('val-secs', String(seconds).padStart(2, '0'));
 
             const cigsPerSecond = appState.cigsPerDay / 86400;
-            const cigsAvoided = cigsPerSecond * secondsElapsed;
-            const pricePerCig = appState.pricePerPack / appState.packSize;
-            const moneySaved = cigsAvoided * pricePerCig;
-            const minutesLifeGained = cigsAvoided * 11;
-            
-            setInnerText('val-cigs', cigsAvoided.toFixed(2));
-            setInnerText('val-money', moneySaved.toFixed(2));
-            setInnerText('val-cravings-count', appState.cravingsBeaten);
+            const cigsAvoided   = cigsPerSecond * secondsElapsed;
+            const pricePerCig   = appState.pricePerPack / appState.packSize;
+            const moneySaved    = cigsAvoided * pricePerCig;
+            const minsGained    = cigsAvoided * 11;
 
-            let lifeGainedText = "";
-            if (minutesLifeGained < 60) {
-                lifeGainedText = `${Math.floor(minutesLifeGained)} Dakika`;
-            } else if (minutesLifeGained < 1440) {
-                lifeGainedText = `${Math.floor(minutesLifeGained / 60)} Saat, ${Math.floor(minutesLifeGained % 60)} Dakika`;
+            setElText('val-cigs', cigsAvoided.toFixed(2));
+            setElText('val-money', moneySaved.toFixed(2));
+            setElText('val-cravings-count', appState.cravingsBeaten);
+
+            let lifeText = '';
+            if (minsGained < 60) {
+                lifeText = `${Math.floor(minsGained)} Dakika`;
+            } else if (minsGained < 1440) {
+                lifeText = `${Math.floor(minsGained / 60)} Saat, ${Math.floor(minsGained % 60)} Dakika`;
             } else {
-                lifeGainedText = `${Math.floor(minutesLifeGained / 1440)} Gün, ${Math.floor((minutesLifeGained % 1440) / 60)} Saat, ${Math.floor(minutesLifeGained % 60)} Dakika`;
+                lifeText = `${Math.floor(minsGained / 1440)} Gün, ${Math.floor((minsGained % 1440) / 60)} Saat`;
             }
-            setInnerText('val-life-saved', lifeGainedText);
+            setElText('val-life-saved', lifeText);
 
             updateCircularHealthScore(secondsElapsed);
             checkAchievements(secondsElapsed, moneySaved);
         }
 
-        function setInnerText(id, val) {
+        function setElText(id, val) {
             const el = document.getElementById(id);
-            if (el) el.innerText = val;
+            if (el) el.textContent = val;
         }
 
+        // --- DAİRESEL SAĞLIK SKORU ---
+        function updateCircularHealthScore(secondsElapsed) {
+            const circle = document.getElementById('circle-progress');
+            const label  = document.getElementById('circle-percentage');
+            if (!circle || !label) return;
+
+            const targetMilestones = milestones.slice(0, 9);
+            let total = 0;
+            targetMilestones.forEach(m => {
+                total += Math.min(100, (secondsElapsed / m.seconds) * 100);
+            });
+            const avg = total / targetMilestones.length;
+            const circumference = 339.29;
+            circle.style.strokeDashoffset = circumference - (avg / 100) * circumference;
+            label.textContent = `%${Math.floor(avg)}`;
+        }
+
+        // --- SAĞLIK MİLESTONE'LARI ---
         function renderMilestones(categoryFilter = 'all') {
             const container = document.getElementById('health-container');
             if (!container) return;
@@ -956,43 +940,44 @@
             const filtered = milestones.filter(m => categoryFilter === 'all' || m.category === categoryFilter);
 
             filtered.forEach(m => {
-                let percentage = (secondsElapsed / m.seconds) * 100;
-                let isDone = percentage >= 100;
-                if (isDone) percentage = 100;
+                const rawPct = (secondsElapsed / m.seconds) * 100;
+                const isDone = rawPct >= 100;
+                const pct    = isDone ? 100 : rawPct;
 
-                let timeRemainingText = "";
+                let timeRemainingText = '';
                 if (!isDone) {
-                    const remainingSecs = m.seconds - secondsElapsed;
-                    timeRemainingText = remainingSecs > 86400 
-                        ? `Kalan: ${Math.ceil(remainingSecs / 86400)} gün` 
-                        : (remainingSecs > 3600 ? `Kalan: ${Math.ceil(remainingSecs / 3600)} saat` : `Kalan: ${Math.ceil(remainingSecs / 60)} dakika`);
+                    const rem = m.seconds - secondsElapsed;
+                    if (rem > 86400) timeRemainingText = `Kalan: ${Math.ceil(rem / 86400)} gün`;
+                    else if (rem > 3600) timeRemainingText = `Kalan: ${Math.ceil(rem / 3600)} saat`;
+                    else timeRemainingText = `Kalan: ${Math.ceil(rem / 60)} dakika`;
                 }
 
-                let iconSvg = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>';
-                if (m.icon === 'pulse') iconSvg = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
-                else if (m.icon === 'wind' || m.icon === 'cloud-upload') iconSvg = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>';
-                else if (m.icon === 'heart') iconSvg = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>';
+                const iconSvg = m.icon === 'heart'
+                    ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>'
+                    : (m.icon === 'wind' || m.icon === 'cloud-upload')
+                    ? '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>'
+                    : '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>';
 
                 const card = document.createElement('div');
                 card.className = `glass-card rounded-2xl p-5 border relative overflow-hidden transition-all duration-300 ${isDone ? 'border-primary-100 dark:border-primary-900 bg-gradient-to-br from-white to-primary-50/20 dark:from-dark-800 dark:to-primary-950/10' : ''}`;
                 card.innerHTML = `
                     <div class="flex items-start space-x-4">
-                        <div class="p-3 rounded-xl ${isDone ? 'bg-primary-100 text-primary-600 dark:bg-primary-950 dark:text-primary-400' : 'bg-slate-100 text-slate-500 dark:bg-dark-700 dark:text-slate-400'}">
+                        <div class="p-3 rounded-xl shrink-0 ${isDone ? 'bg-primary-100 text-primary-600 dark:bg-primary-950 dark:text-primary-400' : 'bg-slate-100 text-slate-500 dark:bg-dark-700 dark:text-slate-400'}">
                             ${iconSvg}
                         </div>
-                        <div class="flex-1">
-                            <div class="flex justify-between items-center mb-1">
-                                <h4 class="font-bold text-slate-800 dark:text-slate-100 text-base">${m.label}</h4>
-                                <span class="text-xs font-semibold px-2 py-0.5 rounded-full ${isDone ? 'bg-primary-100 text-primary-700 dark:bg-primary-950 dark:text-primary-400' : 'bg-slate-100 text-slate-600 dark:bg-dark-700 dark:text-slate-300'}">${m.category}</span>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex justify-between items-center mb-1 gap-2">
+                                <h4 class="font-bold text-slate-800 dark:text-slate-100 text-base truncate">${m.label}</h4>
+                                <span class="text-xs font-semibold px-2 py-0.5 rounded-full shrink-0 ${isDone ? 'bg-primary-100 text-primary-700 dark:bg-primary-950 dark:text-primary-400' : 'bg-slate-100 text-slate-600 dark:bg-dark-700 dark:text-slate-300'}">${m.category}</span>
                             </div>
                             <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3">${m.detail}</p>
                             <div class="relative pt-1">
                                 <div class="flex mb-2 items-center justify-between">
                                     <span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full ${isDone ? 'text-primary-600 bg-primary-100 dark:bg-primary-950/40' : 'text-blue-600 bg-blue-100 dark:text-blue-400 dark:bg-blue-950/40'}">${isDone ? 'Tamamlandı ✓' : 'İlerliyor'}</span>
-                                    <span class="text-xs font-semibold inline-block ${isDone ? 'text-primary-600 dark:text-primary-400' : 'text-slate-500 dark:text-slate-400'}">${percentage.toFixed(1)}%</span>
+                                    <span class="text-xs font-semibold ${isDone ? 'text-primary-600 dark:text-primary-400' : 'text-slate-500 dark:text-slate-400'}">${pct.toFixed(1)}%</span>
                                 </div>
-                                <div class="overflow-hidden h-2.5 text-xs flex rounded-full bg-slate-150 dark:bg-dark-700">
-                                    <div style="width:${percentage}%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${isDone ? 'bg-primary-500' : 'bg-blue-500'} transition-all duration-1000"></div>
+                                <div class="overflow-hidden h-2.5 flex rounded-full bg-slate-150 dark:bg-dark-700">
+                                    <div style="width:${pct}%" class="${isDone ? 'bg-primary-500' : 'bg-blue-500'} transition-all duration-1000 rounded-full"></div>
                                 </div>
                                 ${!isDone ? `<p class="text-xs text-slate-400 mt-2 text-right">${timeRemainingText}</p>` : ''}
                             </div>
@@ -1003,61 +988,46 @@
             });
         }
 
-        function updateCircularHealthScore(secondsElapsed) {
-            const circle = document.getElementById('circle-progress');
-            const label = document.getElementById('circle-percentage');
-            if (!circle || !label) return;
-
-            const targetMilestones = milestones.slice(0, 9);
-            let totalProgress = 0;
-            targetMilestones.forEach(m => {
-                let p = (secondsElapsed / m.seconds) * 100;
-                totalProgress += p > 100 ? 100 : p;
-            });
-
-            const averageProgress = totalProgress / targetMilestones.length;
-            const circumference = 339.29;
-            circle.style.strokeDashoffset = circumference - (averageProgress / 100) * circumference;
-            label.innerText = `%${Math.floor(averageProgress)}`;
-        }
-
+        // --- BAŞARIMLAR ---
         function checkAchievements(secondsElapsed, moneySaved) {
             if (!appState.quitDate || isNaN(appState.quitDate.getTime())) return;
-            if (!secondsElapsed || !moneySaved) {
-                const now = Date.now();
-                secondsElapsed = Math.floor((now - appState.quitDate.getTime()) / 1000);
+
+            if (secondsElapsed === undefined) {
+                secondsElapsed = Math.floor((Date.now() - appState.quitDate.getTime()) / 1000);
+            }
+            if (moneySaved === undefined) {
                 moneySaved = ((appState.cigsPerDay / 86400) * secondsElapsed) * (appState.pricePerPack / appState.packSize);
             }
 
-            let newlyUnlocked = false;
+            let changed = false;
             achievements.forEach(ach => {
                 if (!appState.unlockedAchievements.includes(ach.id)) {
                     if (ach.condition(secondsElapsed, moneySaved, appState.cravingsBeaten)) {
                         appState.unlockedAchievements.push(ach.id);
-                        newlyUnlocked = true;
+                        changed = true;
                         showNotification(`🏆 Başarım Açıldı: ${ach.title}`);
                     }
                 }
             });
 
-            if (newlyUnlocked) {
+            if (changed) {
                 saveState();
                 renderAchievements();
             }
         }
 
         function renderAchievements() {
-            const container = document.getElementById('achievements-container');
-            const progressText = document.getElementById('achievements-progress-text');
-            const progressBar = document.getElementById('achievements-progress-bar');
+            const container     = document.getElementById('achievements-container');
+            const progressText  = document.getElementById('achievements-progress-text');
+            const progressBar   = document.getElementById('achievements-progress-bar');
             if (!container) return;
             container.innerHTML = '';
 
-            const totalCount = achievements.length;
-            const unlockedCount = appState.unlockedAchievements.length;
+            const total    = achievements.length;
+            const unlocked = appState.unlockedAchievements.length;
 
-            if (progressText) progressText.innerText = `${unlockedCount} / ${totalCount} Başarım Kilidi Açıldı`;
-            if (progressBar) progressBar.style.width = `${(unlockedCount / totalCount) * 100}%`;
+            if (progressText) progressText.textContent = `${unlocked} / ${total} Başarım Kilidi Açıldı`;
+            if (progressBar) progressBar.style.width = `${(unlocked / total) * 100}%`;
 
             achievements.forEach(ach => {
                 const isUnlocked = appState.unlockedAchievements.includes(ach.id);
@@ -1070,48 +1040,57 @@
                         <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${ach.description}</p>
                     </div>
                     <div class="mt-4 w-full">
-                        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full ${isUnlocked ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-450' : 'bg-slate-100 text-slate-500 dark:bg-dark-700 dark:text-slate-400'}">${isUnlocked ? 'Açıldı' : 'Kilitli'}</span>
+                        <span class="text-[10px] font-bold px-2.5 py-1 rounded-full ${isUnlocked ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-450' : 'bg-slate-100 text-slate-500 dark:bg-dark-700 dark:text-slate-400'}">${isUnlocked ? 'Açıldı ✓' : 'Kilitli'}</span>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
+        // --- ALINTI ---
         function displayRandomQuote() {
             if (!quoteText || !quoteAuthor || quotes.length === 0) return;
-            let newIndex = currentQuoteIndex;
-            while (newIndex === currentQuoteIndex && quotes.length > 1) {
-                newIndex = Math.floor(Math.random() * quotes.length);
+            let idx = currentQuoteIndex;
+            while (idx === currentQuoteIndex && quotes.length > 1) {
+                idx = Math.floor(Math.random() * quotes.length);
             }
-            currentQuoteIndex = newIndex;
-            const q = quotes[currentQuoteIndex];
+            currentQuoteIndex = idx;
+            const q = quotes[idx];
+
             quoteText.style.opacity = '0';
             quoteAuthor.style.opacity = '0';
             setTimeout(() => {
-                quoteText.innerText = `"${q.quote}"`;
-                quoteAuthor.innerText = `- ${q.author}`;
+                quoteText.textContent = `"${q.quote}"`;
+                quoteAuthor.textContent = `- ${q.author}`;
                 quoteText.style.opacity = '1';
                 quoteAuthor.style.opacity = '1';
             }, 250);
         }
 
+        // --- TEMA ---
         function applyTheme(theme) {
-            if (theme === 'dark') docHtml.classList.add('dark');
-            else if (theme === 'light') docHtml.classList.remove('dark');
-            else {
-                window.matchMedia('(prefers-color-scheme: dark)').matches ? docHtml.classList.add('dark') : docHtml.classList.remove('dark');
+            if (theme === 'dark') {
+                docHtml.classList.add('dark');
+            } else if (theme === 'light') {
+                docHtml.classList.remove('dark');
+            } else {
+                window.matchMedia('(prefers-color-scheme: dark)').matches
+                    ? docHtml.classList.add('dark')
+                    : docHtml.classList.remove('dark');
             }
 
-            const themeButtons = [themeLightBtn, themeDarkBtn, themeSystemBtn];
-            themeButtons.forEach(btn => {
+            [
+                { btn: themeLightBtn,  key: 'light' },
+                { btn: themeDarkBtn,   key: 'dark' },
+                { btn: themeSystemBtn, key: 'system' }
+            ].forEach(({ btn, key }) => {
                 if (!btn) return;
-                const btnTheme = btn.id.split('-')[1];
-                if (btnTheme === theme) {
-                    btn.classList.remove('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300');
+                if (key === theme) {
                     btn.classList.add('bg-primary-500', 'text-white', 'dark:bg-primary-600');
+                    btn.classList.remove('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300');
                 } else {
-                    btn.classList.add('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300');
                     btn.classList.remove('bg-primary-500', 'text-white', 'dark:bg-primary-600');
+                    btn.classList.add('bg-slate-100', 'text-slate-600', 'dark:bg-dark-700', 'dark:text-slate-300');
                 }
             });
         }
@@ -1120,29 +1099,36 @@
             appState.theme = theme;
             saveState();
             applyTheme(theme);
-            showNotification(`Tema ${theme === 'light' ? 'Açık' : theme === 'dark' ? 'Karanlık' : 'Sistem Varsayılanı'} olarak ayarlandı.`);
+            const labels = { light: 'Açık', dark: 'Karanlık', system: 'Sistem Varsayılanı' };
+            showNotification(`Tema "${labels[theme]}" olarak ayarlandı.`);
         }
 
+        // --- BİLDİRİM TOAST ---
         function showNotification(message) {
-            let toastContainer = document.getElementById('toast-container');
-            if (!toastContainer) {
-                toastContainer = document.createElement('div');
-                toastContainer.id = 'toast-container';
-                toastContainer.className = 'fixed bottom-20 sm:bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none';
-                document.body.appendChild(toastContainer);
+            let container = document.getElementById('toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                container.className = 'fixed bottom-20 sm:bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none';
+                document.body.appendChild(container);
             }
 
             const toast = document.createElement('div');
             toast.className = 'glass-card bg-white/95 dark:bg-dark-800/95 border border-slate-100 dark:border-dark-700 text-slate-800 dark:text-slate-100 p-4 rounded-xl shadow-lg flex items-center space-x-3 pointer-events-auto transform translate-y-2 opacity-0 transition-all duration-300';
             toast.innerHTML = `
-                <div class="p-1.5 rounded-lg bg-primary-100 dark:bg-primary-950 text-primary-600 dark:text-primary-455">
+                <div class="p-1.5 rounded-lg bg-primary-100 dark:bg-primary-950 text-primary-600 shrink-0">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <p class="text-sm font-semibold flex-1">${message}</p>
             `;
+            container.appendChild(toast);
 
-            toastContainer.appendChild(toast);
-            setTimeout(() => toast.classList.remove('translate-y-2', 'opacity-0'), 10);
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    toast.classList.remove('translate-y-2', 'opacity-0');
+                });
+            });
+
             setTimeout(() => {
                 toast.classList.add('translate-y-2', 'opacity-0');
                 setTimeout(() => toast.remove(), 300);
