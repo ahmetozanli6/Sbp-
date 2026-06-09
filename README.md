@@ -257,25 +257,25 @@
                         
                         <div class="relative z-10 mb-6">
                             <span class="text-xs font-bold uppercase tracking-widest text-primary-100 bg-primary-600/30 px-3 py-1 rounded-full">Yolculuk Devam Ediyor</span>
-                            <h3 class="text-primary-50 font-display font-medium mt-4 text-base uppercase tracking-wider">Sigarasız Geçen Süre</h3>
+                            <h3 class="text-white font-display font-semibold mt-4 text-base uppercase tracking-wider">Sigarasız Geçen Süre</h3>
                         </div>
 
                         <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-xl relative z-10">
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/5">
-                                <div id="val-days" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight">0</div>
-                                <div class="text-[10px] sm:text-xs text-primary-100 mt-1 uppercase font-semibold">Gün</div>
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/20">
+                                <div id="val-days" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">0</div>
+                                <div class="text-[10px] sm:text-xs text-primary-50 mt-1 uppercase font-semibold">Gün</div>
                             </div>
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/5">
-                                <div id="val-hours" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight">00</div>
-                                <div class="text-[10px] sm:text-xs text-primary-100 mt-1 uppercase font-semibold">Saat</div>
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/20">
+                                <div id="val-hours" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">00</div>
+                                <div class="text-[10px] sm:text-xs text-primary-50 mt-1 uppercase font-semibold">Saat</div>
                             </div>
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/5">
-                                <div id="val-mins" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight">00</div>
-                                <div class="text-[10px] sm:text-xs text-primary-100 mt-1 uppercase font-semibold">Dakika</div>
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/20">
+                                <div id="val-mins" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">00</div>
+                                <div class="text-[10px] sm:text-xs text-primary-50 mt-1 uppercase font-semibold">Dakika</div>
                             </div>
-                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/5">
-                                <div id="val-secs" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight">00</div>
-                                <div class="text-[10px] sm:text-xs text-primary-100 mt-1 uppercase font-semibold">Saniye</div>
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-3 text-center border border-white/20">
+                                <div id="val-secs" class="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white">00</div>
+                                <div class="text-[10px] sm:text-xs text-primary-50 mt-1 uppercase font-semibold">Saniye</div>
                             </div>
                         </div>
                     </div>
