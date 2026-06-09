@@ -58,7 +58,7 @@
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.4);
@@ -67,7 +67,7 @@
         }
 
         .dark .glass-card {
-            background: rgba(17, 24, 39, 0.8);
+            background-color: rgba(17, 24, 39, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.05);
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
         }
