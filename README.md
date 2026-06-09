@@ -85,7 +85,7 @@
             box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
         }
 
-        /* Uçuşan Arka Plan Balonları */
+        /* Uçuşan Balonlar */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -106,7 +106,7 @@
             100% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
-        /* Sayfa Geçiş Animasyonu */
+        /* Sayfa Geçişleri */
         .tab-content {
             animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
@@ -116,7 +116,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Dairesel Sağlık İlerleme Çemberi */
+        /* Dairesel İlerleme */
         .circle-progress-bg {
             fill: none;
             stroke: #e2e8f0;
@@ -132,7 +132,7 @@
             transition: stroke-dashoffset 0.8s ease-in-out;
         }
 
-        /* Alt Navigasyon Aktif Çizgisi */
+        /* Mobil Navigasyon Aktif Durumu */
         .bottom-nav-item {
             position: relative;
         }
@@ -158,7 +158,7 @@
             transform: translateX(-50%) scaleX(1);
         }
 
-        /* Kriz Butonu Dalga Efekti */
+        /* Aşerme Butonu */
         @keyframes pulse-ring {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
@@ -169,7 +169,7 @@
             animation: pulse-ring 2s infinite;
         }
 
-        /* Özelleştirilmiş Kaydırma Çubuğu (Scrollbar) */
+        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
@@ -206,11 +206,11 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-dark-900 dark:text-slate-100 min-h-screen flex flex-col relative">
     
-    <!-- Dekoratif Arka Plan Balonları -->
+    <!-- Dekoratif Bloblar -->
     <div class="blob bg-primary-200 dark:bg-primary-700/20 w-72 h-72 top-10 left-10"></div>
     <div class="blob bg-teal-200 dark:bg-teal-700/20 w-80 h-80 bottom-20 right-10"></div>
 
-    <!-- Üst Menü / Logo Alanı -->
+    <!-- Üst Menü -->
     <header class="bg-white/80 dark:bg-dark-800/80 backdrop-blur-md border-b border-slate-100 dark:border-dark-700 p-4 sticky top-0 z-40 transition-colors">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
@@ -235,10 +235,10 @@
         </div>
     </header>
 
-    <!-- Ana İçerik -->
+    <!-- Ana İçerik Alanı -->
     <main class="flex-grow flex items-center justify-center p-4 sm:p-6 w-full max-w-4xl mx-auto z-10">
         
-        <!-- KURULUM EKRANI (İlk Girişte Görünür) -->
+        <!-- SETUP EKRANI -->
         <div id="setup-screen" class="w-full max-w-md glass-card rounded-3xl p-6 sm:p-8 transition-all duration-300">
             <div class="text-center mb-6">
                 <h2 class="text-2xl font-extrabold text-slate-800 dark:text-slate-100 mb-2">Yeni Bir Başlangıç</h2>
@@ -269,7 +269,7 @@
                     <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">Bir Paketteki Sigara Sayısı</label>
                     <input type="number" id="input-pack-size" min="1" max="100" value="20" required
                         class="w-full p-3.5 border border-slate-200 dark:border-dark-600 rounded-2xl bg-white dark:bg-dark-800 text-slate-700 dark:text-slate-200 outline-none transition-all">
-                    <p class="text-[10px] text-slate-400 dark:text-slate-500 mt-1">*Standart paketlerde genellikle 20 adet bulunur.</p>
+                    <p class="text-[10px] text-slate-450 dark:text-slate-500 mt-1">*Standart paketlerde genellikle 20 adet bulunur.</p>
                 </div>
 
                 <button type="submit" 
@@ -280,14 +280,14 @@
             </form>
         </div>
 
-        <!-- ANA DASHBOARD EKRANI (Başlangıçta Gizlidir) -->
+        <!-- DASHBOARD UYGULAMA PANELİ -->
         <div id="app-screen" class="hidden w-full space-y-6 sm:space-y-8 animate-fade-in">
             
-            <!-- SEKMELER: 1- GÖSTERGE PANELİ -->
+            <!-- SEKME: GÖSTERGE PANELİ -->
             <div id="dashboard-section" class="tab-section space-y-6 sm:space-y-8 tab-content">
                 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Sayaç Kartı -->
+                    <!-- Sayaç -->
                     <div class="lg:col-span-2 glass-card rounded-3xl p-6 sm:p-8 shadow-md relative overflow-hidden bg-gradient-to-br from-primary-500 to-teal-600 text-white border-none flex flex-col justify-between">
                         <div class="absolute -top-10 -right-10 opacity-10">
                             <svg class="w-48 h-48" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
@@ -318,7 +318,7 @@
                         </div>
                     </div>
 
-                    <!-- Sağlık Skoru Çemberi -->
+                    <!-- Sağlık Skoru -->
                     <div class="glass-card rounded-3xl p-6 shadow-md flex flex-col items-center justify-center text-center">
                         <div class="relative flex items-center justify-center mb-3">
                             <svg class="w-32 h-32 transform -rotate-90">
@@ -335,7 +335,7 @@
                     </div>
                 </div>
 
-                <!-- Kriz Yönetim Butonu -->
+                <!-- Kriz Kaydet Butonu -->
                 <div class="glass-card rounded-3xl p-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4">
                     <div class="text-center sm:text-left">
                         <h4 class="font-extrabold text-slate-850 dark:text-slate-100 text-lg font-display">Canınız Sigara mı İstiyor?</h4>
@@ -347,9 +347,8 @@
                     </button>
                 </div>
 
-                <!-- İstatistik Kartları Grid -->
+                <!-- İstatistikler Grid -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    
                     <!-- Tasarruf -->
                     <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-100/50 flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-3">
@@ -396,7 +395,7 @@
                     <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-100/50 flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold text-slate-400 uppercase">Yaşam Kazanımı</span>
-                            <div class="bg-rose-100 dark:bg-rose-950/50 p-2 rounded-xl text-rose-600 dark:text-rose-400">
+                            <div class="bg-rose-100 dark:bg-rose-950/50 p-2 rounded-xl text-rose-600 dark:text-rose-450">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
                             </div>
                         </div>
@@ -407,7 +406,7 @@
                     </div>
                 </div>
 
-                <!-- Günün Sözü -->
+                <!-- Motivasyon Sözü -->
                 <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-150/40 relative overflow-hidden">
                     <div class="flex items-start justify-between">
                         <div class="space-y-2 max-w-[85%]">
@@ -422,7 +421,7 @@
                 </div>
             </div>
 
-            <!-- SEKMELER: 2- SAĞLIK DURUMU -->
+            <!-- SEKME: SAĞLIK DURUMU -->
             <div id="health-section" class="tab-section hidden space-y-6 tab-content">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
@@ -430,7 +429,7 @@
                         <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Vücudunuzun sigarayı bıraktığınız andan itibaren geçirdiği biyolojik değişimler.</p>
                     </div>
                     
-                    <!-- Kategori Filtresi -->
+                    <!-- Filtreler -->
                     <div class="flex flex-wrap gap-1.5 bg-slate-100/60 dark:bg-dark-800/60 p-1 rounded-2xl border border-slate-200/40 dark:border-dark-700 shrink-0 self-start sm:self-center">
                         <button data-filter="all" class="milestone-filter-btn px-3 py-1.5 text-xs font-semibold rounded-xl bg-primary-500 text-white dark:bg-primary-600 transition-all">Hepsi</button>
                         <button data-filter="Kısa Vade" class="milestone-filter-btn px-3 py-1.5 text-xs font-semibold rounded-xl bg-slate-100 text-slate-600 dark:bg-dark-700 dark:text-slate-300 hover:bg-slate-200 transition-all">Kısa Vade</button>
@@ -439,20 +438,19 @@
                     </div>
                 </div>
 
-                <!-- Dinamik Sağlık Kartları -->
+                <!-- Dinamik Kartlar -->
                 <div id="health-container" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             </div>
 
-            <!-- SEKMELER: 3- BAŞARILAR -->
+            <!-- SEKME: BAŞARILAR -->
             <div id="achievements-section" class="tab-section hidden space-y-6 tab-content">
                 <div class="glass-card rounded-3xl p-6 shadow-sm border border-slate-150/40">
                     <h3 class="text-xl font-extrabold text-slate-800 dark:text-slate-100 font-display">Başarılar ve Rozetler</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 mb-4">Mücadelenizi taçlandırın. Süre, tasarruf ve aşerme engelleme kriterlerine göre rozetleri açın.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 mb-4">Mücadelenizi taçlandırın. Rozetlerinizi kilitlerini açarak sergileyin.</p>
                     
-                    <!-- Başarım İlerleme Çubuğu -->
                     <div class="relative pt-1">
                         <div class="flex mb-2 items-center justify-between">
-                            <span id="achievements-progress-text" class="text-xs font-bold text-slate-600 dark:text-slate-350 uppercase">0 / 0 Başarım Kilitli</span>
+                            <span id="achievements-progress-text" class="text-xs font-bold text-slate-600 dark:text-slate-350 uppercase">0 / 0 Rozet Açıldı</span>
                         </div>
                         <div class="overflow-hidden h-2 flex rounded-full bg-slate-100 dark:bg-dark-700">
                             <div id="achievements-progress-bar" style="width:0%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gradient-to-r from-primary-500 to-teal-500 transition-all duration-500"></div>
@@ -460,19 +458,18 @@
                     </div>
                 </div>
 
-                <!-- Dinamik Başarı Rozetleri -->
+                <!-- Dinamik Rozetler -->
                 <div id="achievements-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
             </div>
 
-            <!-- SEKMELER: 4- AYARLAR -->
+            <!-- SEKME: AYARLAR -->
             <div id="settings-section" class="tab-section hidden space-y-6 tab-content">
                 <div>
                     <h3 class="text-2xl font-extrabold text-slate-850 dark:text-slate-100 font-display">Ayarlar</h3>
-                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Bırakma tarihi ve sigara alışkanlık verilerinizi güncelleyin veya uygulamanızı özelleştirin.</p>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 mt-0.5">Bırakma tarihi ve sigara alışkanlık verilerinizi güncelleyin veya uygulamanızı sıfırlayın.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Form Bilgilerini Güncelle -->
                     <div class="md:col-span-2 glass-card rounded-3xl p-6 shadow-sm space-y-5">
                         <h4 class="font-bold text-slate-800 dark:text-slate-100 font-display">Verileri Düzenle</h4>
                         
@@ -509,10 +506,8 @@
                         </form>
                     </div>
 
-                    <!-- Görünüm Teması & Tehlikeli Bölge -->
+                    <!-- Görünüm & Sıfırlama -->
                     <div class="space-y-6">
-                        
-                        <!-- Tema Seçimi -->
                         <div class="glass-card rounded-3xl p-6 shadow-sm space-y-4">
                             <h4 class="font-bold text-slate-800 dark:text-slate-100 font-display">Görünüm Teması</h4>
                             <div class="flex flex-col gap-2">
@@ -537,10 +532,9 @@
                             </div>
                         </div>
 
-                        <!-- Sıfırlama -->
                         <div class="glass-card rounded-3xl p-6 shadow-sm border border-red-150/40 dark:border-red-950/20 space-y-4">
                             <h4 class="font-bold text-red-500 font-display">Tehlikeli Bölge</h4>
-                            <p class="text-[11px] text-slate-400">Tüm verilerinizi, kazanılan rozetleri ve geçmiş bilgilerinizi kalıcı olarak silip uygulamayı sıfırlayabilirsiniz.</p>
+                            <p class="text-[11px] text-slate-400">Verileri sıfırlayarak uygulamayı baştan kurabilirsiniz.</p>
                             <button id="btn-reset" class="w-full bg-red-100 hover:bg-red-200 dark:bg-red-950/40 dark:hover:bg-red-950 text-red-600 dark:text-red-400 font-bold py-3 px-4 rounded-xl text-sm transition-colors active:scale-98">
                                 Tüm Verileri Sıfırla
                             </button>
@@ -551,12 +545,12 @@
         </div>
     </main>
 
-    <!-- Alt Bilgi -->
+    <!-- Footer -->
     <footer class="text-center py-6 text-slate-400 dark:text-slate-550 text-xs mt-auto z-10 transition-colors">
         <p>Sağlıklı bir gelecek için kararlılıkla attığınız adıma tebrikler. ✨</p>
     </footer>
 
-    <!-- Mobil Alt Yapışkan Menü (Mobilde Görünür) -->
+    <!-- Mobil Navigasyon -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white/85 dark:bg-dark-800/85 backdrop-blur-lg border-t border-slate-100 dark:border-dark-700 py-3 px-6 z-40 transition-colors flex items-center justify-between">
         <button data-tab="dashboard" class="bottom-nav-item active flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 space-y-1">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z"></path></svg>
@@ -578,7 +572,7 @@
 
     <!-- JavaScript Mantıksal Kodları -->
     <script>
-        // --- 1. VERİ TANIMLAMALARI (data.js) ---
+        // --- 1. VERİ TANIMLAMALARI ---
         const milestones = [
             { id: 1, label: "Kalp Atış Hızı", detail: "Kan basıncı ve nabız hızı normale döner. El ve ayaklar ısınmaya başlar.", seconds: 20 * 60, icon: "pulse", category: "Kısa Vade" },
             { id: 2, label: "Oksijen Seviyesi", detail: "Kandaki karbonmonoksit seviyesi yarıya iner. Oksijen seviyesi normale döner.", seconds: 8 * 3600, icon: "wind", category: "Kısa Vade" },
@@ -628,7 +622,7 @@
             { quote: "Sigara dumanıyla uçup giden sadece paran değil, gelecekteki mutlu günlerindir.", author: "Anonim" }
         ];
 
-        // --- 2. UYGULAMA MOTORU (app.js) ---
+        // --- 2. UYGULAMA MOTORU ---
         let appState = {
             quitDate: null,
             cigsPerDay: 0,
@@ -674,16 +668,19 @@
             }
         });
 
+        // LocalStorage'dan yüklerken spread bug'ını önlemek için güvenli yükleme
         function loadState() {
             const savedState = localStorage.getItem('ozgur_nefes_state');
             if (savedState) {
                 try {
                     const parsed = JSON.parse(savedState);
-                    appState = {
-                        ...appState,
-                        ...parsed,
-                        quitDate: parsed.quitDate ? new Date(parsed.quitDate) : null
-                    };
+                    appState.quitDate = parsed.quitDate ? new Date(parsed.quitDate) : null;
+                    appState.cigsPerDay = parseFloat(parsed.cigsPerDay) || 0;
+                    appState.pricePerPack = parseFloat(parsed.pricePerPack) || 0;
+                    appState.packSize = parseFloat(parsed.packSize) || 20;
+                    appState.cravingsBeaten = parseInt(parsed.cravingsBeaten) || 0;
+                    appState.theme = parsed.theme || 'light';
+                    appState.unlockedAchievements = Array.isArray(parsed.unlockedAchievements) ? parsed.unlockedAchievements : [];
                 } catch (e) {
                     console.error("Local storage state load error:", e);
                 }
@@ -707,8 +704,8 @@
                     const packSizeVal = parseFloat(document.getElementById('input-pack-size').value) || 20;
 
                     const selectedDate = new Date(dateVal);
-                    if (selectedDate.getTime() > Date.now()) {
-                        alert("Bırakma tarihi gelecekteki bir zaman olamaz!");
+                    if (isNaN(selectedDate.getTime()) || selectedDate.getTime() > Date.now()) {
+                        alert("Lütfen geçerli ve geçmiş bir bırakma tarihi girin!");
                         return;
                     }
 
@@ -734,8 +731,8 @@
                     const packSizeVal = parseFloat(document.getElementById('edit-pack-size').value) || 20;
 
                     const selectedDate = new Date(dateVal);
-                    if (selectedDate.getTime() > Date.now()) {
-                        alert("Bırakma tarihi gelecekteki bir zaman olamaz!");
+                    if (isNaN(selectedDate.getTime()) || selectedDate.getTime() > Date.now()) {
+                        alert("Lütfen geçerli ve geçmiş bir bırakma tarihi girin!");
                         return;
                     }
 
@@ -752,7 +749,7 @@
 
             if (resetBtn) {
                 resetBtn.addEventListener('click', () => {
-                    if (confirm("Tüm bilgilerinizi sıfırlamak istediğinizden emin misiniz?")) {
+                    if (confirm("Tüm bilgilerinizi ve istatistiklerinizi sıfırlamak istediğinizden emin misiniz? Bu işlem geri alınamaz.")) {
                         if (timerInterval) clearInterval(timerInterval);
                         localStorage.removeItem('ozgur_nefes_state');
                         appState = {
@@ -864,7 +861,7 @@
         }
 
         function updateDashboard() {
-            if (!appState.quitDate) return;
+            if (!appState.quitDate || isNaN(appState.quitDate.getTime())) return;
 
             const now = Date.now();
             const secondsElapsed = Math.max(0, Math.floor((now - appState.quitDate.getTime()) / 1000));
@@ -913,6 +910,7 @@
             if (!container) return;
             container.innerHTML = '';
 
+            if (!appState.quitDate || isNaN(appState.quitDate.getTime())) return;
             const secondsElapsed = Math.floor((Date.now() - appState.quitDate.getTime()) / 1000);
             const filtered = milestones.filter(m => categoryFilter === 'all' || m.category === categoryFilter);
 
@@ -983,7 +981,7 @@
         }
 
         function checkAchievements(secondsElapsed, moneySaved) {
-            if (!appState.quitDate) return;
+            if (!appState.quitDate || isNaN(appState.quitDate.getTime())) return;
             if (!secondsElapsed || !moneySaved) {
                 const now = Date.now();
                 secondsElapsed = Math.floor((now - appState.quitDate.getTime()) / 1000);
