@@ -214,7 +214,7 @@
     <header class="bg-white/80 dark:bg-dark-800/80 backdrop-blur-md border-b border-slate-100 dark:border-dark-700 p-4 sticky top-0 z-40 transition-colors">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
-                <div class="p-2 bg-primary-100 dark:bg-primary-950 text-primary-600 dark:text-primary-450 rounded-xl">
+                <div class="p-2 bg-primary-100 dark:bg-primary-950 text-primary-600 dark:text-primary-455 rounded-xl">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
@@ -353,7 +353,7 @@
                     <div class="glass-card rounded-2xl p-5 shadow-sm border border-slate-100/50 flex flex-col justify-between">
                         <div class="flex items-center justify-between mb-3">
                             <span class="text-xs font-semibold text-slate-400 uppercase">Tasarruf Edilen</span>
-                            <div class="bg-emerald-100 dark:bg-emerald-950/50 p-2 rounded-xl text-emerald-600 dark:text-emerald-400">
+                            <div class="bg-emerald-100 dark:bg-emerald-950/50 p-2 rounded-xl text-emerald-600 dark:text-emerald-450">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                             </div>
                         </div>
@@ -654,6 +654,35 @@
         const themeDarkBtn = document.getElementById('theme-dark');
         const themeSystemBtn = document.getElementById('theme-system');
 
+        // Gelişmiş Tarih Ayrıştırıcı (iOS Safari ve Mobil cihazlar için güvenli parser)
+        function parseDateSafely(dateStr) {
+            if (!dateStr) return null;
+            
+            // Eğer ISO formatında Z ile bitiyorsa doğrudan oluştur
+            if (typeof dateStr === 'string' && dateStr.endsWith('Z')) {
+                const d = new Date(dateStr);
+                if (!isNaN(d.getTime())) return d;
+            }
+            
+            // date-time-local girdisini ayrıştır: YYYY-MM-DDTHH:MM
+            const parts = dateStr.split(/[-T:\.Z ]/);
+            if (parts.length >= 5) {
+                const year = parseInt(parts[0], 10);
+                const month = parseInt(parts[1], 10) - 1;
+                const day = parseInt(parts[2], 10);
+                const hour = parseInt(parts[3], 10);
+                const minute = parseInt(parts[4], 10);
+                const second = parts[5] ? parseInt(parts[5], 10) : 0;
+                
+                // Yerel saat diliminde oluşturulur (Timezone kayması engellenir)
+                const d = new Date(year, month, day, hour, minute, second);
+                if (!isNaN(d.getTime())) return d;
+            }
+            
+            const fallback = new Date(dateStr);
+            return isNaN(fallback.getTime()) ? null : fallback;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             loadState();
             setupEventListeners();
@@ -668,13 +697,12 @@
             }
         });
 
-        // LocalStorage'dan yüklerken spread bug'ını önlemek için güvenli yükleme
         function loadState() {
             const savedState = localStorage.getItem('ozgur_nefes_state');
             if (savedState) {
                 try {
                     const parsed = JSON.parse(savedState);
-                    appState.quitDate = parsed.quitDate ? new Date(parsed.quitDate) : null;
+                    appState.quitDate = parsed.quitDate ? parseDateSafely(parsed.quitDate) : null;
                     appState.cigsPerDay = parseFloat(parsed.cigsPerDay) || 0;
                     appState.pricePerPack = parseFloat(parsed.pricePerPack) || 0;
                     appState.packSize = parseFloat(parsed.packSize) || 20;
@@ -703,9 +731,9 @@
                     const priceVal = parseFloat(document.getElementById('input-price').value);
                     const packSizeVal = parseFloat(document.getElementById('input-pack-size').value) || 20;
 
-                    const selectedDate = new Date(dateVal);
-                    if (isNaN(selectedDate.getTime()) || selectedDate.getTime() > Date.now()) {
-                        alert("Lütfen geçerli ve geçmiş bir bırakma tarihi girin!");
+                    const selectedDate = parseDateSafely(dateVal);
+                    if (!selectedDate || selectedDate.getTime() > Date.now()) {
+                        alert("Bırakma tarihi gelecekteki bir zaman veya geçersiz olamaz!");
                         return;
                     }
 
@@ -730,9 +758,9 @@
                     const priceVal = parseFloat(document.getElementById('edit-price').value);
                     const packSizeVal = parseFloat(document.getElementById('edit-pack-size').value) || 20;
 
-                    const selectedDate = new Date(dateVal);
-                    if (isNaN(selectedDate.getTime()) || selectedDate.getTime() > Date.now()) {
-                        alert("Lütfen geçerli ve geçmiş bir bırakma tarihi girin!");
+                    const selectedDate = parseDateSafely(dateVal);
+                    if (!selectedDate || selectedDate.getTime() > Date.now()) {
+                        alert("Bırakma tarihi gelecekteki bir zaman veya geçersiz olamaz!");
                         return;
                     }
 
@@ -808,11 +836,19 @@
             });
         }
 
+        // Yerel zamana göre input doldurucu (timezone offset sorunlarını çözer)
         function initSetupForm() {
             const now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            
             const dateInput = document.getElementById('input-date');
-            if (dateInput) dateInput.value = now.toISOString().slice(0, 16);
+            if (dateInput) {
+                dateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+            }
         }
 
         function showScreen(screen) {
@@ -823,12 +859,17 @@
                 setupScreen.classList.add('hidden');
                 appScreen.classList.remove('hidden');
                 
-                if (appState.quitDate) {
+                if (appState.quitDate && !isNaN(appState.quitDate.getTime())) {
                     const editDateInput = document.getElementById('edit-date');
-                    const localOffset = appState.quitDate.getTimezoneOffset() * 60000;
-                    const localDate = new Date(appState.quitDate.getTime() - localOffset);
-                    
-                    if (editDateInput) editDateInput.value = localDate.toISOString().slice(0, 16);
+                    if (editDateInput) {
+                        const now = appState.quitDate;
+                        const year = now.getFullYear();
+                        const month = String(now.getMonth() + 1).padStart(2, '0');
+                        const day = String(now.getDate()).padStart(2, '0');
+                        const hours = String(now.getHours()).padStart(2, '0');
+                        const minutes = String(now.getMinutes()).padStart(2, '0');
+                        editDateInput.value = `${year}-${month}-${day}T${hours}:${minutes}`;
+                    }
                     if (document.getElementById('edit-cigs')) document.getElementById('edit-cigs').value = appState.cigsPerDay;
                     if (document.getElementById('edit-price')) document.getElementById('edit-price').value = appState.pricePerPack;
                     if (document.getElementById('edit-pack-size')) document.getElementById('edit-pack-size').value = appState.packSize;
@@ -1094,7 +1135,7 @@
             const toast = document.createElement('div');
             toast.className = 'glass-card bg-white/95 dark:bg-dark-800/95 border border-slate-100 dark:border-dark-700 text-slate-800 dark:text-slate-100 p-4 rounded-xl shadow-lg flex items-center space-x-3 pointer-events-auto transform translate-y-2 opacity-0 transition-all duration-300';
             toast.innerHTML = `
-                <div class="p-1.5 rounded-lg bg-primary-100 dark:bg-primary-950 text-primary-600 dark:text-primary-400">
+                <div class="p-1.5 rounded-lg bg-primary-100 dark:bg-primary-950 text-primary-600 dark:text-primary-455">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 </div>
                 <p class="text-sm font-semibold flex-1">${message}</p>
