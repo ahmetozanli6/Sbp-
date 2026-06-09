@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -37,6 +38,12 @@
             50% { opacity: 0.8; transform: scale(1.05); }
         }
         .pulse-icon { animation: pulse-soft 2s infinite; }
+        
+        /* Özelleştirilmiş Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
@@ -55,7 +62,7 @@
     <main class="flex-grow flex items-center justify-center p-4 sm:p-6 w-full max-w-4xl mx-auto">
         
         <!-- SETUP SCREEN -->
-        <div id="setup-screen" class="w-full max-w-md glass-card rounded-2xl shadow-xl p-6 sm:p-8 w-full transition-all duration-300">
+        <div id="setup-screen" class="w-full max-w-md glass-card rounded-2xl shadow-xl p-6 sm:p-8 transition-all duration-300">
             <h2 class="text-xl sm:text-2xl font-bold text-center mb-6 text-slate-800">Yeni Bir Başlangıç</h2>
             <p class="text-slate-500 text-center mb-8 text-sm sm:text-base">Sigarayı bıraktığınız zamanı ve bilgileri girerek özgürlüğünüzü kutlamaya başlayın.</p>
             
@@ -74,7 +81,7 @@
                 
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1">Bir Paket Sigaranın Fiyatı (₺)</label>
-                    <input type="number" id="input-price" min="1" step="0.5" placeholder="Örn: 60" required
+                    <input type="number" id="input-price" min="1" step="0.5" placeholder="Örn: 120" required
                         class="w-full p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-slate-700">
                     <p class="text-xs text-slate-400 mt-1">*Hesaplama pakette 20 sigara olduğu varsayılarak yapılır.</p>
                 </div>
@@ -115,15 +122,15 @@
                         <div class="text-xs sm:text-sm text-emerald-100 mt-1">Gün</div>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div id="val-hours" class="text-3xl sm:text-5xl font-bold font-mono">0</div>
+                        <div id="val-hours" class="text-3xl sm:text-5xl font-bold font-mono">00</div>
                         <div class="text-xs sm:text-sm text-emerald-100 mt-1">Saat</div>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div id="val-mins" class="text-3xl sm:text-5xl font-bold font-mono">0</div>
+                        <div id="val-mins" class="text-3xl sm:text-5xl font-bold font-mono">00</div>
                         <div class="text-xs sm:text-sm text-emerald-100 mt-1">Dakika</div>
                     </div>
                     <div class="flex flex-col items-center">
-                        <div id="val-secs" class="text-3xl sm:text-5xl font-bold font-mono">0</div>
+                        <div id="val-secs" class="text-3xl sm:text-5xl font-bold font-mono">00</div>
                         <div class="text-xs sm:text-sm text-emerald-100 mt-1">Saniye</div>
                     </div>
                 </div>
@@ -149,7 +156,7 @@
                     </div>
                     <div>
                         <p class="text-sm text-slate-500 font-medium">İçilmeyen Sigara</p>
-                        <div class="text-2xl sm:text-3xl font-bold text-slate-800 font-mono mt-1" id="val-cigs">0</div>
+                        <div class="text-2xl sm:text-3xl font-bold text-slate-800 font-mono mt-1" id="val-cigs">0.00</div>
                     </div>
                 </div>
             </div>
@@ -161,7 +168,7 @@
                     <h3 class="text-xl font-bold text-slate-800">Sağlık İyileşmeleri</h3>
                 </div>
                 
-                <div class="space-y-6" id="health-milestones-container">
+                <div class="space-y-6 max-h-[400px] overflow-y-auto pr-2" id="health-milestones-container">
                     <!-- Milestones will be injected here by JS -->
                 </div>
             </div>
@@ -192,11 +199,14 @@
         const milestones = [
             { id: 1, label: "Nabız ve tansiyon normale dönmeye başlar.", seconds: 20 * 60 },
             { id: 2, label: "Kandaki oksijen seviyesi normale döner.", seconds: 8 * 3600 },
-            { id: 3, label: "Karbonmonoksit vücuttan atılır.", seconds: 24 * 3600 },
+            { id: 3, label: "Karbonmonoksit seviyesi normale iner.", seconds: 24 * 3600 },
             { id: 4, label: "Tat ve koku alma duyusu keskinleşir.", seconds: 48 * 3600 },
             { id: 5, label: "Bronşlar gevşer, nefes almak kolaylaşır.", seconds: 72 * 3600 },
-            { id: 6, label: "Kan dolaşımı ve akciğer fonksiyonu artar.", seconds: 14 * 24 * 3600 }, // 2 Hafta
-            { id: 7, label: "Kalp krizi riski yarı yarıya azalır.", seconds: 365 * 24 * 3600 } // 1 Yıl
+            { id: 6, label: "Vücut nikotinden tamamen arınır.", seconds: 7 * 24 * 3600 }, // 1 Hafta
+            { id: 7, label: "Kan dolaşımı ve akciğer fonksiyonu %30 artar.", seconds: 14 * 24 * 3600 }, // 2 Hafta
+            { id: 8, label: "Öksürük ve nefes darlığı azalır.", seconds: 30 * 24 * 3600 }, // 1 Ay
+            { id: 9, label: "Akciğer enfeksiyonu riski önemli ölçüde düşer.", seconds: 90 * 24 * 3600 }, // 3 Ay
+            { id: 10, label: "Kalp krizi riski yarı yarıya azalır.", seconds: 365 * 24 * 3600 } // 1 Yıl
         ];
 
         // Initialize App
@@ -216,7 +226,7 @@
             cigsPerDay = parseFloat(document.getElementById('input-cigs').value);
             pricePerPack = parseFloat(document.getElementById('input-price').value);
 
-            if (quitDate > new Date()) {
+            if (quitDate.getTime() > Date.now()) {
                 alert("Bırakma tarihi gelecekteki bir zaman olamaz!");
                 return;
             }
@@ -226,53 +236,55 @@
 
         // Handle Edit Button
         btnEdit.addEventListener('click', () => {
-            clearInterval(timerInterval);
+            if(timerInterval) clearInterval(timerInterval);
             dashboardScreen.classList.add('hidden');
             setupScreen.classList.remove('hidden');
         });
 
         function startTracking() {
-            // Switch Screens
             setupScreen.classList.add('hidden');
             dashboardScreen.classList.remove('hidden');
 
-            // Render milestones UI first time
             renderMilestones();
-
-            // Initial Update
             updateDashboard();
 
-            // Start Loop
+            // Clear any existing interval to prevent overlapping loops
+            if(timerInterval) clearInterval(timerInterval);
             timerInterval = setInterval(updateDashboard, 1000);
         }
 
         function updateDashboard() {
-            const now = new Date();
-            let secondsElapsed = Math.floor((now - quitDate) / 1000);
+            if (!quitDate) return;
+
+            const now = Date.now();
+            // Zaman hesaplaması için mutlak değerler (getTime) kullanıldı
+            let secondsElapsed = Math.floor((now - quitDate.getTime()) / 1000);
 
             if (secondsElapsed < 0) secondsElapsed = 0;
 
-            // 1. Update Timer
-            const d = Math.floor(secondsElapsed / (3600 * 24));
-            const h = Math.floor((secondsElapsed % (3600 * 24)) / 3600);
+            // 1. Update Timer - Garantili Formül
+            const d = Math.floor(secondsElapsed / 86400);
+            const h = Math.floor((secondsElapsed % 86400) / 3600);
             const m = Math.floor((secondsElapsed % 3600) / 60);
             const s = Math.floor(secondsElapsed % 60);
 
+            // Değerleri String formatına çevirip başına 0 ekleme garantisi eklendi.
             document.getElementById('val-days').innerText = d;
-            document.getElementById('val-hours').innerText = h.toString().padStart(2, '0');
-            document.getElementById('val-mins').innerText = m.toString().padStart(2, '0');
-            document.getElementById('val-secs').innerText = s.toString().padStart(2, '0');
+            document.getElementById('val-hours').innerText = String(h).padStart(2, '0');
+            document.getElementById('val-mins').innerText = String(m).padStart(2, '0');
+            document.getElementById('val-secs').innerText = String(s).padStart(2, '0');
 
             // 2. Calculate Stats
-            // Assuming 20 cigs in a pack. 
-            // seconds in a day = 86400
+            // Matematiksel mantık: Günlük x adet sigara / 86400 saniye
             const cigsPerSecond = cigsPerDay / 86400;
             const cigsAvoided = cigsPerSecond * secondsElapsed;
             
+            // 1 paket 20 adet sayılır
             const pricePerCig = pricePerPack / 20;
             const moneySaved = cigsAvoided * pricePerCig;
 
-            document.getElementById('val-cigs').innerText = Math.floor(cigsAvoided);
+            // İçilmeyen sigara adedinde küsürat gösterilerek sayacın donduğu yanılgısı engellendi.
+            document.getElementById('val-cigs').innerText = cigsAvoided.toFixed(2);
             document.getElementById('val-money').innerText = moneySaved.toFixed(2);
 
             // 3. Update Milestones Progress
@@ -282,7 +294,7 @@
         function renderMilestones() {
             milestonesContainer.innerHTML = '';
             
-            milestones.forEach((m, index) => {
+            milestones.forEach((m) => {
                 const html = `
                     <div class="relative" id="milestone-${m.id}">
                         <div class="flex justify-between text-sm mb-1">
@@ -294,7 +306,7 @@
                         </div>
                     </div>
                 `;
-                milestonesContainer.innerHTML += html;
+                milestonesContainer.insertAdjacentHTML('beforeend', html);
             });
         }
 
